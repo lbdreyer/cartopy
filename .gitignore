@@ -28,7 +28,7 @@ lib/cartopy/data/gshhs
 lib/cartopy/data/shapefiles
 
 # some configuration files which aren't part of cartopy repo
-lib/cartopy/tests/.pep8_test_exclude.txt
+lib/cartopy/tests/.pycodestyle_test_exclude.txt
 lib/cartopy/siteconfig.py
 
 # pydev files
