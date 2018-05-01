@@ -33,63 +33,6 @@ degree_locator = mticker.MaxNLocator(nbins=9, steps=[1, 1.5, 1.8, 2, 3, 6, 10])
 _DEGREE_SYMBOL = u'\u00B0'
 
 
-def _fix_lons(lons):
-    """
-    Fix the given longitudes into the range ``[-180, 180]``.
-
-    """
-    lons = np.array(lons, copy=False, ndmin=1)
-    fixed_lons = ((lons + 180) % 360) - 180
-    # Make the positive 180s positive again.
-    fixed_lons[(fixed_lons == -180) & (lons > 0)] *= -1
-    return fixed_lons
-
-
-def _lon_heimisphere(longitude):
-    """Return the hemisphere (E, W or '' for 0) for the given longitude."""
-    longitude = _fix_lons(longitude)
-    if longitude > 0:
-        hemisphere = 'E'
-    elif longitude < 0:
-        hemisphere = 'W'
-    else:
-        hemisphere = ''
-    return hemisphere
-
-
-def _lat_heimisphere(latitude):
-    """Return the hemisphere (N, S or '' for 0) for the given latitude."""
-    if latitude > 0:
-        hemisphere = 'N'
-    elif latitude < 0:
-        hemisphere = 'S'
-    else:
-        hemisphere = ''
-    return hemisphere
-
-
-def _east_west_formatted(longitude, num_format='g'):
-    fmt_string = u'{longitude:{num_format}}{degree}{hemisphere}'
-    return fmt_string.format(longitude=abs(longitude), num_format=num_format,
-                             hemisphere=_lon_heimisphere(longitude),
-                             degree=_DEGREE_SYMBOL)
-
-
-def _north_south_formatted(latitude, num_format='g'):
-    fmt_string = u'{latitude:{num_format}}{degree}{hemisphere}'
-    return fmt_string.format(latitude=abs(latitude), num_format=num_format,
-                             hemisphere=_lat_heimisphere(latitude),
-                             degree=_DEGREE_SYMBOL)
-
-
-#: A formatter which turns longitude values into nice longitudes such as 110W
-LONGITUDE_FORMATTER = mticker.FuncFormatter(lambda v, pos:
-                                            _east_west_formatted(v))
-#: A formatter which turns longitude values into nice longitudes such as 45S
-LATITUDE_FORMATTER = mticker.FuncFormatter(lambda v, pos:
-                                           _north_south_formatted(v))
-
-
 class Gridliner(object):
     # NOTE: In future, one of these objects will be add-able to a GeoAxes (and
     # maybe even a plain old mpl axes) and it will call the "_draw_gridliner"
