@@ -411,7 +411,7 @@ setup(
 
 
     # requires proj4 headers
-    ext_modules=cythonize(extensions)
+    ext_modules=cythonize(extensions),
     cmdclass=cmdclass,
     classifiers=[
             'Development Status :: 4 - Beta',
