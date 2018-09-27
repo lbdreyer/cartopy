@@ -43,17 +43,15 @@ install:
   - conda create -n $ENV_NAME python=$PYTHON_VERSION
   - source activate $ENV_NAME
 
-  # Set up for test coverage
-  # ------------------------
-  - if [[ "$NAME" == "Latest everything"* ]]; then
-      PACKAGES="$PACKAGES coveralls pytest-cov";
-      export CYTHON_COVERAGE=1;
-    fi
-
   # Customise the testing environment
   # ---------------------------------
   - conda config --add channels conda-forge
   - PACKAGES="$PACKAGES cython pillow pytest pep8 proj4=4.* pyshp shapely six requests pyepsg owslib"
+  # Set up for code coverage
+  - if [[ "$NAME" == "Latest everything"* ]]; then
+      PACKAGES="$PACKAGES coveralls pytest-cov";
+      export CYTHON_COVERAGE=1;
+    fi
   - conda install --quiet $PACKAGES
 
   # Conda debug
