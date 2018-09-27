@@ -9,6 +9,7 @@ omit =
     */cartopy/sphinxext/*
     */cartopy/test/*
     */cartopy/_version.py
+    */cartopy/mpl/patch.py
 plugins = Cython.Coverage
 
 
