@@ -81,7 +81,7 @@ script:
 
 after_success:
   - if [[ "$NAME" == "Latest everything"* ]]; then
-      coverage report
+      coverage report;
       coveralls;
     fi
 

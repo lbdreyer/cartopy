@@ -5,10 +5,10 @@
 [run]
 branch = True
 omit = 
-    lib/cartopy/examples/*
-    lib/cartopy/sphinxext/*
-    lib/cartopy/tests/*
-    lib/cartopy/_version.py
+    */cartopy/examples/*
+    */cartopy/sphinxext/*
+    */cartopy/tests/*
+    */cartopy/_version.py
 plugins = Cython.Coverage
 
 [report]
