@@ -7,9 +7,8 @@ branch = True
 omit = 
     */cartopy/examples/*
     */cartopy/sphinxext/*
-    */cartopy/test/*
+    */cartopy/tests/*
     */cartopy/_version.py
-    */cartopy/mpl/patch.py
 plugins = Cython.Coverage
 
 
