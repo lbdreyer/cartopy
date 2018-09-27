@@ -333,7 +333,8 @@ else:
 # Enable cython coverage
 cython_coverage_enabled = os.environ.get('CYTHON_COVERAGE', None)
 if cython_coverage_enabled:
-    extra_cython_args = {'define_macros': [('CYTHON_TRACE_NOGIL', '1')]}
+    extra_cython_args = {'define_macros': [('CYTHON_TRACE_NOGIL', '1'),
+                                           ('CYTHON_TRACE', '1')]}
     extra_extension_args.update(extra_cython_args)
 
 # Set up extension building
