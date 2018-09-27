@@ -413,7 +413,8 @@ setup(
                   ['io/srtm.npz']},
 
 
-    ext_modules=cythonize(extensions, compiler_directives={'linetrace': True}),
+    ext_modules=cythonize(extensions, compiler_directives={'linetrace': True,
+                                                           'binding': True}),
     cmdclass=cmdclass,
     classifiers=[
             'Development Status :: 4 - Beta',
